@@ -1,28 +1,33 @@
-CREATE DATABASE cadastro_alunos;
-USE cadastro_alunos;
+CREATE DATABASE PetShop;
 
-CREATE TABLE cursos (
-    id_curso INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL
+USE petshop;
+
+CREATE TABLE dono (
+    id_dono int AUTO_INCREMENT PRIMARY KEY,
+    nome_dono VARCHAR(100) not NULL,
+    email VARCHAR(100) NOT NULL
+);
+INSERT INTO dono (nome_dono, email)
+VALUES('Lucas Yudi', 'lucas.yudi4748@gmail.com');
+
+INSERT INTO dono (nome_dono, email)
+VALUES('Paulo Jardel', 'jardel.paulo4748@gmail.com');
+
+INSERT INTO dono (nome_dono, email)
+VALUES('Nicolas Antonio', 'nicolas4748@gmail.com');
+
+CREATE TABLE pet(
+    id_pet INT AUTO_INCREMENT PRIMARY KEY,
+    nome_pet VARCHAR(100) NOT NULL,
+    id_dono INT,
+    FOREIGN KEY (id_dono) REFERENCES dono(id_dono)
 );
 
-CREATE TABLE alunos (
-    id_aluno INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    data_nascimento DATE NOT NULL,
-    id_curso INT,
-    FOREIGN KEY (id_curso) REFERENCES cursos(id_curso)
-);
+INSERT INTO pet(nome_pet)
+VALUES('Joremias');
 
-INSERT INTO cursos (nome)
-VALUES ('ADS');
+INSERT INTO pet(nome_pet)
+VALUES('Jorge');
 
-INSERT INTO cursos (nome)
-VALUES ('ENG COMP');
-
-INSERT INTO alunos (nome, email, data_nascimento, id_curso)
-VALUES ('Lucas', 'lucasantonio@email.com', '2002-06-13', 1);
-
-INSERT INTO alunos (nome, email, data_nascimento, id_curso)
-VALUES ('Thiago', 'thiagomelo@email.com', '2003-11-19', 2);
+INSERT INTO pet(nome_pet)
+VALUES('Jorel');
